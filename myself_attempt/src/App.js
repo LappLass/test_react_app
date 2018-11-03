@@ -32,10 +32,36 @@ const myNews = [
 const App = () => {
   return (
     <React.Fragment>
+    <TestInput />
     <h1>News</h1>
     <News  data={myNews}/>
     </React.Fragment>
   )
+}
+class TestInput extends React.Component {
+  state = {
+    value: ""
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <input 
+        className="test-input" 
+        onChange={this.handlerChangeValue} 
+        value={this.state.value} />
+        <button onClick={this.handlerShowAlert}>SHOW</button>
+      </React.Fragment>
+    
+    )
+  }
+  handlerChangeValue = (e) => {
+    this.setState({value: e.currentTarget.value})
+  }
+  handlerShowAlert = (e) => {
+    e.preventDefault()
+    const { value } = this.state
+    alert( value )
+  }
 }
 class Article extends React.Component {
   state = {
@@ -43,7 +69,11 @@ class Article extends React.Component {
   }
   readMoreClick = (e) => {
     e.preventDefault()
-    this.setState( {visible: !this.state.visible })
+    this.setState(prevState => { 
+        return {
+      visible: !this.state.visible
+       }
+    })
   }
   render() { 
     const { author, text, bigText } = this.props.data

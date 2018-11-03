@@ -10,6 +10,7 @@ strong {
   body {
   background: rgba(0, 102, 255, 0.38);
   font-family: sans-serif;
+  margin-left: 5px;
   }
   p {
   margin: 0 0 5px;
@@ -21,6 +22,7 @@ strong {
   margin: 0 0 5px;
   box-shadow: 2px 2px 5px -1px rgb(0, 81, 202);
   padding: 3px 5px;
+  border-radius: 5px;
   }
   .news__author {
   text-decoration: underline;
@@ -38,3 +40,13 @@ strong {
     border-radius: 4px;
     color: #fff
   }
+.test-input {
+  width: 300px;
+  border-radius: 5px;
+  margin-left: 150px;
+  margin-top: 50px;
+  padding: 7px 12px;
+  border: 1px solid blue;
+  box-shadow: 2px 2px 5px -1px rgb(0, 81, 202);
+
+}

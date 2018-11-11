@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const myNews = [
@@ -24,43 +23,70 @@ const myNews = [
     {
     id: 4,
     author: 'Гость',
-    text: 'Бесплатно. Без смс, про реакт, заходи - https://maxpfrontend.ru',
-    bigText: 'Еще есть группа VK, telegram и канал на youtube! Вся инфа на сайте, не реклама!'
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    bigText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum corporis nobis optio molestias aspernatur repellat suscipit tenetur maiores quas sed.'
     }
   ];
 
 const App = () => {
   return (
     <React.Fragment>
-    <TestInput />
+    <Add />
     <h1>News</h1>
     <News  data={myNews}/>
     </React.Fragment>
   )
 }
-class TestInput extends React.Component {
-  state = {
-    value: ""
-  }
+class Add extends React.Component {
+ state = {
+  author: '',
+  message: '',
+  accept: false
+ }
   render() {
+    const { author, message,accept } = this.state
     return (
-      <React.Fragment>
+      <form className='add'>
         <input 
-        className="test-input" 
-        onChange={this.handlerChangeValue} 
-        value={this.state.value} />
-        <button onClick={this.handlerShowAlert}>SHOW</button>
-      </React.Fragment>
+          type='text'
+          className="add__author"  
+          placeholder='Ваше имя'
+          value={ author }
+          onChange={this.handleChangeAuthor}
+        />
+        <textarea
+          className='add__text'
+          placeholder='Текст новости'
+          value={ message }
+          onChange={this.handleChangeMessage}
+        ></textarea>
+        <label className='add__checkrule' >
+          <input type='checkbox' onChange={this.handlerAccept}/> Я согласен с правилами
+        </label>
+        <button 
+          className='add__btn'
+          onClick={ this.handlerShowAlert }
+          disabled={!accept}>
+          show alert
+        </button>
+      </form>
     
     )
   }
-  handlerChangeValue = (e) => {
-    this.setState({value: e.currentTarget.value})
+  handlerAccept = (e) => {
+    this.setState({ accept: e.currentTarget.checked})
+  }
+  handleChangeAuthor = (e) => {
+    e.preventDefault()
+    this.setState({ author: e.currentTarget.value})
+  }
+  handleChangeMessage = (e) => {
+    e.preventDefault()
+    this.setState({ message: e.currentTarget.value})
   }
   handlerShowAlert = (e) => {
     e.preventDefault()
-    const { value } = this.state
-    alert( value )
+
   }
 }
 class Article extends React.Component {
@@ -86,7 +112,11 @@ class Article extends React.Component {
         !visible && <a href="#" onClick={this.readMoreClick} className="news_readmore">more</a>
       }
       {
-        visible &&  <p className="news_text" onClick={this.readMoreClick}>{bigText}</p>
+        visible &&  
+        <React.Fragment>
+        <p className="news_big_text" >{bigText}</p> 
+        <span className="arrow-top" onClick={this.readMoreClick} />
+        </React.Fragment>
       }
       
       </div>

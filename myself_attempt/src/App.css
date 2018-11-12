@@ -92,5 +92,5 @@ p {
   .add__btn:disabled {
   background: #CCC;
   color: #999;
-  border: none;
+  border-color: transparent;
   }

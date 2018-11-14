@@ -48,6 +48,7 @@ p {
   height: 0;
   border: 12px solid transparent;
   border-bottom-color: blue;
+  cursor: pointer;
 }
 .arrow-top:hover {
   transform: scale(1.2);

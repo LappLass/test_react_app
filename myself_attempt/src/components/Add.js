@@ -41,7 +41,7 @@ class Add extends Component {
              className='add__btn'
              onClick={ this.handlerShowAlert }
              disabled={this.validate()}>
-             show alert
+             add news
            </button>
          </form>
        

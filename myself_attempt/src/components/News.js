@@ -3,6 +3,7 @@ import Article from './Article';
 
 
 class News extends Component {
+  
     renderNews = () => {
       const { data } = this.props
       let newsTemplate;

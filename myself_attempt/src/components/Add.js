@@ -8,6 +8,14 @@ class Add extends Component {
      bigText: '',
      agree: false
     }
+
+    componentDidMount() {
+      this.setState({ author: '',
+                      text: '',
+                      bigText: ''
+                    })
+    }
+    
      render() {
        const { author, text, bigText } = this.state
        return (
@@ -72,6 +80,8 @@ class Add extends Component {
          bigText, 
          id: +new Date()
        })
+      this.setState({text:'', 
+                     bigText: ''})
      }
    }
 
